@@ -8,6 +8,7 @@
 
 import React from 'react';
 import {
+  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -39,9 +40,9 @@ const App = () => {
         <Tab.Navigator
           screenOptions={{
             tabBarStyle: {
-              height: 60,
+              height: 83,
               alignItems: 'center',
-              backgroundColor: 'rgb(36, 33, 46)',
+              backgroundColor: '#14121E',
               borderTopWidth: 1,
               borderTopColor: 'white',
             },
@@ -91,7 +92,7 @@ const App = () => {
 const styles = StyleSheet.create({
   safeAreaContainer: {
     flex: 1,
-    backgroundColor: 'rgb(36, 33, 46)',
+    backgroundColor: '#14121E',
   },
 });
 
