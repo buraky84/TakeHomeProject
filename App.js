@@ -44,7 +44,7 @@ const App = () => {
               alignItems: 'center',
               backgroundColor: '#14121E',
               borderTopWidth: 1,
-              borderTopColor: 'white',
+              borderTopColor: '#262334',
             },
             tabBarActiveTintColor: 'white',
             tabBarInactiveTintColor: 'gray',

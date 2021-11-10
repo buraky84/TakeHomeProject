@@ -4,9 +4,7 @@ import {Text, View, StyleSheet} from 'react-native';
 export const HeaderContainer = ({title}) => {
   return (
     <View style={styles.headerContainer}>
-      <Text style={{color: '#FFFFFF', fontSize: 22, fontWeight: '700'}}>
-        {title}
-      </Text>
+      <Text style={styles.headerText}>{title}</Text>
     </View>
   );
 };
@@ -17,5 +15,12 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     paddingLeft: 24,
+  },
+  headerText: {
+    fontFamily: 'ApercuArabicPro-Regular',
+    fontWeight: '700',
+    color: '#FFFFFF',
+    lineHeight: 28,
+    fontSize: 22,
   },
 });
