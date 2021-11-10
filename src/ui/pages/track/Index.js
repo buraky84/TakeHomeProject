@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
 import {HeaderContainer} from '../../components/HeaderContainer';
+import {useDispatch, useSelector} from 'react-redux';
+import {TRACK_ACTIONS} from '../../../redux/actionTypes';
 
 export const Track = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({type: TRACK_ACTIONS.GET_MARKETS_REQUEST});
+  }, []);
+
   return (
     <View style={{flex: 1}}>
       <HeaderContainer title={'Track'} />
@@ -29,9 +37,7 @@ export const Track = () => {
               <Text style={styles.portfolioHeaderText}>HOLDINGS</Text>
             </View>
           </View>
-            <ScrollView style={{flex: 1}}>
-
-            </ScrollView>
+          <ScrollView style={{flex: 1}} />
         </View>
       </View>
     </View>
