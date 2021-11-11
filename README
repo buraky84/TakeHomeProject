@@ -1,8 +1,37 @@
-*** react-native-screens library is integrated as a solution to compile error (dependency error).
-https://github.com/react-navigation/react-navigation/issues/9995
+Project file structure
+==========================
+App.js ==> App registration, Redux Provider & SafeAreaView container component. App navigation and tabs defined here.
 
-*** Downloaded and linked ApercuArabicPro to app.
+/src => main source folder
+/src/assets => images & fonts
+/src/config => global const data is stored.
+/src/redux => redux, redux saga, reducer configuration, reducer module files and data helper functions are placed.
+/src/ui => Customer faced UI designs and re-usable common components are placed.
+/src/util => Util, helper methods we can re-use globally over the app.
 
-*** Activated Ipad support
+Library integrations
+=========================
+### Navigation library and its dependencies
+@react-navigation/bottom-tabs, @react-navigation/native, react-native-safe-area-context, react-native-screens
 
-*** Enabled Portrait only mode.
+Note: react-native-screens library is integrated as a solution to compile error (dependency error).
+Ref link: https://github.com/react-navigation/react-navigation/issues/9995
+
+### Icons
+react-native-vector-icons library integrated for tabbar icons.
+I have found a way to export icons from Figma as SVG and load it to "https://icomoon.io" which generates a custom font. Downloaded & registered
+this custom font to the app. react-native-vector-icons supports loading custom font from icomoon.
+
+### Custom Fonts
+Downloaded ApercuArabicPro fonts and linked to the app.
+
+### HTTP Rest API
+axios library is used
+
+### State Management
+react-redux, redux, redux-saga libraries integrated
+
+Additional Configuration & Notes
+=========================
+* App is tested on iPhone8, iPhone12, iPadPro(11-inch), Android Xaomi Mi 10T to make sure design is flexibly matching on different screen sizes & Platforms.
+* On IOS portrait only mode is enabled & Ipad support enabled
