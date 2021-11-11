@@ -1,6 +1,7 @@
 Project file structure
 ==========================
-App.js ==> App registration, Redux Provider Container & SafeAreaView is placed. App navigation container and tabs are also defined here.
+index.js ==> App registration only
+App.js ==> Redux Provider Container & SafeAreaView container. App navigation container and tabs are also defined here.
 
 /src => main source folder
 /src/assets => images & fonts
