@@ -1,6 +1,6 @@
 Project file structure
 ==========================
-App.js ==> App registration, Redux Provider & SafeAreaView container component. App navigation and tabs defined here.
+App.js ==> App registration, Redux Provider Container & SafeAreaView is placed. App navigation container and tabs are also defined here.
 
 /src => main source folder
 /src/assets => images & fonts
@@ -35,3 +35,12 @@ Additional Configuration & Notes
 =========================
 * App is tested on iPhone8, iPhone12, iPadPro(11-inch), Android Xaomi Mi 10T to make sure design is flexibly matching on different screen sizes & Platforms.
 * On IOS portrait only mode is enabled & Ipad support enabled
+
+App WorkFlow
+=========================
+Clicking second tab (Track) "GET"s Market Data and stored in redux. Spinner is displayed while loading the data first time.
+Market data is fetched every 3 seconds with an interval to get updated data on the background without spinner. Interval killed on exit.
+Clicking icon next to "Coins" sorts assets by "baseCurrency" ASC / DESC directions.
+Clicking icom next to "Price" sorts assets by "price" ASC / DESC direction.
+Clicking Add/Remove buttons on Holdings column updates redux state of Holdings arr.
+Clicking bottom-right floating button is tied to empty function and does not make any operation.
