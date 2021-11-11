@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 
 export const FloatingButton = ({title, buttonPress}) => {
   return (
@@ -26,10 +26,13 @@ const styles = StyleSheet.create({
       height: 4,
     },
     shadowRadius: 10,
+    paddingTop: Platform.OS == 'ios' ? 3 : 0,
+    paddingLeft: Platform.OS == 'ios' ? 1 : 0,
   },
   buttonText: {
     fontFamily: 'ApercuArabicPro-Regular',
     fontSize: 38,
     color: '#FFFFFF',
+    marginTop: Platform.OS == 'ios' ? 0 : -2,
   },
 });
