@@ -74,7 +74,7 @@ export const Track = () => {
   };
 
   const _portfolioAddItemPressed = () => {
-    console.log('button pressed');
+    /*no action binded yet*/
   };
 
   const {isMarketsDataLoading, markets, holdings} = useSelector(

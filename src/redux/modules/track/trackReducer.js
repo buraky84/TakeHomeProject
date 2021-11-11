@@ -32,7 +32,6 @@ export const trackReducer = (state = initialGlobalState, action) => {
         action?.payload && action.payload.length > 0
           ? filterMarketData(action.payload)
           : [];
-      //console.log(filteredMarketData);
       newState = {
         ...state,
         isMarketsDataLoading: false,
@@ -47,7 +46,6 @@ export const trackReducer = (state = initialGlobalState, action) => {
       };
       return newState;
     case ADD_REMOVE_HOLDINGS:
-      console.log(action.payload);
       newState = {
         ...state,
         holdings: addRemoveHoldings(state.holdings, action.payload),
