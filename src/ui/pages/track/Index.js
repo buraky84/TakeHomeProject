@@ -59,15 +59,8 @@ export const Track = () => {
           <Text style={styles.mainContainerHeaderText}>Portfolio 1</Text>
         </View>
         <View style={styles.contentContainer}>
-          <View
-            style={{
-              flexDirection: 'row',
-              height: 47,
-              borderBottomWidth: 1,
-              borderBottomColor: '#262334',
-              paddingTop: 22,
-            }}>
-            <View style={{flex: 0.3, alignItems: 'flex-start'}}>
+          <View style={styles.assetMenuContainer}>
+            <View style={styles.coinMenuContainer}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.portfolioHeaderText}>COIN</Text>
                 <TouchableOpacity
@@ -81,12 +74,12 @@ export const Track = () => {
                   }}>
                   <Image
                     source={require('../../../assets/images/sort_custom.png')}
-                    style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
+                    style={styles.coinMenuSortImage}
                   />
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{flex: 0.35, alignItems: 'flex-end'}}>
+            <View style={styles.priceMenuContainer}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.portfolioPriceText}>PRICE</Text>
                 <TouchableOpacity
@@ -100,12 +93,12 @@ export const Track = () => {
                   }}>
                   <Image
                     source={require('../../../assets/images/sort_down.png')}
-                    style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
+                    style={styles.priceMenuSortImage}
                   />
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{flex: 0.35, alignItems: 'flex-end'}}>
+            <View style={styles.holdingMenuContainer}>
               <Text style={styles.portfolioHoldingsText}>HOLDINGS</Text>
             </View>
           </View>
@@ -179,4 +172,16 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 20,
   },
+  assetMenuContainer: {
+    flexDirection: 'row',
+    height: 47,
+    borderBottomWidth: 1,
+    borderBottomColor: '#262334',
+    paddingTop: 22,
+  },
+  coinMenuContainer: {flex: 0.3, alignItems: 'flex-start'},
+  coinMenuSortImage: {width: 7, height: 7, marginLeft: 4, marginTop: 3},
+  priceMenuContainer: {flex: 0.35, alignItems: 'flex-end'},
+  priceMenuSortImage: {width: 7, height: 7, marginLeft: 4, marginTop: 3},
+  holdingMenuContainer: {flex: 0.35, alignItems: 'flex-end'},
 });
