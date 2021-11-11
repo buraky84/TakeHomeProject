@@ -26,7 +26,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <SafeAreaView style={styles.safeAreaContainer}>
-        <StatusBar barStyle={'light-content'} />
+        <StatusBar backgroundColor={'#14121E'} barStyle={'light-content'} />
         <NavigationContainer>
           <Tab.Navigator
             screenOptions={{
