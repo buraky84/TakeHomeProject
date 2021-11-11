@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 22,
   },
-  itemImage: {width: 24, height: 24, marginRight: 6},
+  itemImage: {width: 24, height: 24, resizeMode: 'stretch', marginRight: 6},
   assetNameContainer: {flex: 0.3, alignItems: 'flex-start'},
   assetPriceContainer: {flex: 0.35, alignItems: 'flex-end'},
   assetHoldingsContainer: {flex: 0.35, alignItems: 'flex-end'},

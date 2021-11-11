@@ -3,6 +3,7 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  Platform,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -61,23 +62,22 @@ export const Track = () => {
         <View style={styles.contentContainer}>
           <View style={styles.assetMenuContainer}>
             <View style={styles.coinMenuContainer}>
-              <View style={{flexDirection: 'row'}}>
-                <Text style={styles.portfolioHeaderText}>COIN</Text>
-                <TouchableOpacity
-                  onPress={() => {
-                    setSortByPriceDirection(null);
-                    setSortByNameDirection(
-                      !sortByNameDirection || sortByNameDirection === 'asc'
-                        ? 'desc'
-                        : 'asc',
-                    );
-                  }}>
-                  <Image
-                    source={require('../../../assets/images/sort_custom.png')}
-                    style={styles.coinMenuSortImage}
-                  />
-                </TouchableOpacity>
-              </View>
+              <Text style={styles.portfolioHeaderText}>COIN</Text>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => {
+                  setSortByPriceDirection(null);
+                  setSortByNameDirection(
+                    !sortByNameDirection || sortByNameDirection === 'asc'
+                      ? 'desc'
+                      : 'asc',
+                  );
+                }}>
+                <Image
+                  source={require('../../../assets/images/sort_custom.png')}
+                  style={styles.coinMenuSortImage}
+                />
+              </TouchableOpacity>
             </View>
             <View style={styles.priceMenuContainer}>
               <View style={{flexDirection: 'row'}}>
@@ -165,7 +165,6 @@ const styles = StyleSheet.create({
     fontFamily: 'ApercuArabicPro-Bold',
     lineHeight: 14,
     fontSize: 11,
-    fontWeight: '700',
     color: '#7B7986',
   },
   contentContainer: {
@@ -179,9 +178,22 @@ const styles = StyleSheet.create({
     borderBottomColor: '#262334',
     paddingTop: 22,
   },
-  coinMenuContainer: {flex: 0.3, alignItems: 'flex-start'},
-  coinMenuSortImage: {width: 7, height: 7, marginLeft: 4, marginTop: 3},
+  coinMenuContainer: {
+    flex: 0.3,
+    flexDirection: 'row',
+  },
+  coinMenuSortImage: {
+    width: 7,
+    height: 7,
+    marginLeft: 4,
+    marginTop: Platform.OS === 'ios' ? 3 : 2,
+  },
   priceMenuContainer: {flex: 0.35, alignItems: 'flex-end'},
-  priceMenuSortImage: {width: 7, height: 7, marginLeft: 4, marginTop: 3},
+  priceMenuSortImage: {
+    width: 7,
+    height: 7,
+    marginLeft: 4,
+    marginTop: Platform.OS === 'ios' ? 3 : 2,
+  },
   holdingMenuContainer: {flex: 0.35, alignItems: 'flex-end'},
 });

@@ -32,6 +32,7 @@ const App = () => {
             screenOptions={{
               tabBarStyle: {
                 paddingTop: 10,
+                marginBottom: 8,
                 alignItems: 'center',
                 backgroundColor: '#14121E',
                 borderTopWidth: 1,
