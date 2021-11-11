@@ -12,7 +12,7 @@ export const HeaderContainer = ({title}) => {
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#14121E',
-    height: 80,
+    paddingVertical: 17,
     justifyContent: 'center',
     paddingHorizontal: 24,
   },

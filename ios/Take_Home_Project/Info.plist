@@ -45,6 +45,7 @@
 		<string>ApercuArabicPro-Medium.ttf</string>
 		<string>ApercuArabicPro-Light.ttf</string>
 		<string>ApercuArabicPro-Bold.ttf</string>
+		<string>icomoon.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

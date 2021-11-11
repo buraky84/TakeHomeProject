@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, Image} from 'react-native';
 import {numberWithCommas} from '../../../../Util';
 import {CommonButton} from '../../../components/CommonButton';
 
@@ -15,10 +15,16 @@ export const CoinMarketItem = ({item, buttonPress}) => {
         height: 72,
         alignItems: 'center',
       }}>
-      <View style={{flex: 0.2, alignItems: 'flex-start'}}>
-        <Text style={styles.assetBaseNameText}>{baseCurrency}</Text>
+      <View style={{flex: 0.25, alignItems: 'flex-start'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Image
+            source={require('../../../../assets/images/bitcoin.png')}
+            style={{width: 24, height: 24, marginRight: 6}}
+          />
+          <Text style={styles.assetBaseNameText}>{baseCurrency}</Text>
+        </View>
       </View>
-      <View style={{flex: 0.4, alignItems: 'flex-end'}}>
+      <View style={{flex: 0.35, alignItems: 'flex-end'}}>
         <Text style={styles.assetPriceText}>${numberWithCommas(price)}</Text>
       </View>
       <View style={{flex: 0.4, alignItems: 'flex-end'}}>

@@ -3,6 +3,7 @@ import {
   GET_MARKETS_SUCCESS,
   GET_MARKETS_FAILURE,
 } from './trackActionTypes';
+import {filterMarketData} from './trackDataHelper';
 
 const initialGlobalState = {
   isMarketsDataLoading: false,
@@ -43,15 +44,4 @@ export const trackReducer = (state = initialGlobalState, action) => {
     default:
       return state;
   }
-};
-
-const filterMarketData = marketData => {
-  return marketData.filter(
-    item =>
-      item.enabled &&
-      !item.restricted &&
-      item.baseCurrency &&
-      item.type === 'spot' &&
-      item.quoteCurrency === 'USD',
-  );
 };

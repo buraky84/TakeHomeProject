@@ -8,7 +8,6 @@
 
 import React from 'react';
 import {
-  Image,
   SafeAreaView,
   StatusBar,
   StyleSheet,
@@ -21,11 +20,12 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Invest} from './src/ui/pages/invest/Index';
 import {News} from './src/ui/pages/news/Index';
 import {Track} from './src/ui/pages/track/Index';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {Provider} from 'react-redux';
-
 import store from './src/redux/configureStore';
+import {createIconSetFromIcoMoon} from 'react-native-vector-icons';
+import icoMoonConfig from './src/assets/fonts/selection.json';
+const CustomIcoMoonIcons = createIconSetFromIcoMoon(icoMoonConfig);
+
 const Tab = createBottomTabNavigator();
 
 const App = () => {
@@ -43,7 +43,7 @@ const App = () => {
           <Tab.Navigator
             screenOptions={{
               tabBarStyle: {
-                height: 83,
+                paddingTop: 8,
                 alignItems: 'center',
                 backgroundColor: '#14121E',
                 borderTopWidth: 1,
@@ -58,7 +58,7 @@ const App = () => {
               options={{
                 headerShown: false,
                 tabBarIcon: ({color, size}) => (
-                  <Ionicons name="home-outline" color={color} size={size} />
+                  <CustomIcoMoonIcons name="Wallet" color={color} size={size} />
                 ),
               }}
             />
@@ -68,8 +68,8 @@ const App = () => {
               options={{
                 headerShown: false,
                 tabBarIcon: ({color, size}) => (
-                  <MaterialIcons
-                    name="track-changes"
+                  <CustomIcoMoonIcons
+                    name="Tracker"
                     color={color}
                     size={size}
                   />
@@ -82,11 +82,7 @@ const App = () => {
               options={{
                 headerShown: false,
                 tabBarIcon: ({color, size}) => (
-                  <Ionicons
-                    name="ios-newspaper-outline"
-                    color={color}
-                    size={size}
-                  />
+                  <CustomIcoMoonIcons name="News" color={color} size={size} />
                 ),
               }}
             />

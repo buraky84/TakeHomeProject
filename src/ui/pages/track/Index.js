@@ -5,14 +5,43 @@ import {
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 import {HeaderContainer} from '../../components/HeaderContainer';
 import {useDispatch, useSelector} from 'react-redux';
 import {TRACK_ACTIONS} from '../../../redux/actionTypes';
 import {CoinMarketItem} from './components/CoinMarketItem';
+import {FloatingButton} from '../../components/FloatingButton';
 
 export const Track = () => {
+  const [sortByNameDirection, setSortByNameDirection] = useState(null);
+  const [sortByPriceDirection, setSortByPriceDirection] = useState(null);
+
+  const _applyMarketsDataSorting = data => {
+    if (sortByNameDirection) {
+      if (sortByNameDirection === 'asc') {
+        return data.sort(
+          (itemA, itemB) => itemA.baseCurrency > itemB.baseCurrency,
+        );
+      } else {
+        return data.sort(
+          (itemA, itemB) => itemB.baseCurrency > itemA.baseCurrency,
+        );
+      }
+    }
+
+    if (sortByPriceDirection) {
+      if (sortByPriceDirection === 'asc') {
+        return data.sort((itemA, itemB) => itemA.price > itemB.price);
+      } else {
+        return data.sort((itemA, itemB) => itemB.price > itemA.price);
+      }
+    }
+
+    return data;
+  };
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,6 +49,7 @@ export const Track = () => {
   }, []);
 
   const {isMarketsDataLoading, markets} = useSelector(state => state.track);
+  const proccessedMarketsData = _applyMarketsDataSorting(markets);
 
   return (
     <View style={{flex: 1}}>
@@ -37,22 +67,42 @@ export const Track = () => {
               borderBottomColor: '#262334',
               paddingTop: 22,
             }}>
-            <View style={{flex: 0.2, alignItems: 'flex-start'}}>
+            <View style={{flex: 0.25, alignItems: 'flex-start'}}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.portfolioHeaderText}>COIN</Text>
-                <Image
-                  source={require('../../../assets/images/sort_custom.png')}
-                  style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
-                />
+                <TouchableOpacity
+                  onPress={() => {
+                    setSortByPriceDirection(null);
+                    setSortByNameDirection(
+                      !sortByNameDirection || sortByNameDirection === 'asc'
+                        ? 'desc'
+                        : 'asc',
+                    );
+                  }}>
+                  <Image
+                    source={require('../../../assets/images/sort_custom.png')}
+                    style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
-            <View style={{flex: 0.4, alignItems: 'flex-end'}}>
+            <View style={{flex: 0.35, alignItems: 'flex-end'}}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.portfolioPriceText}>PRICE</Text>
-                <Image
-                  source={require('../../../assets/images/sort_down.png')}
-                  style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
-                />
+                <TouchableOpacity
+                  onPress={() => {
+                    setSortByNameDirection(null);
+                    setSortByPriceDirection(
+                      !sortByPriceDirection || sortByPriceDirection === 'asc'
+                        ? 'desc'
+                        : 'asc',
+                    );
+                  }}>
+                  <Image
+                    source={require('../../../assets/images/sort_down.png')}
+                    style={{width: 7, height: 7, marginLeft: 4, marginTop: 3}}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
             <View style={{flex: 0.4, alignItems: 'flex-end'}}>
@@ -62,29 +112,37 @@ export const Track = () => {
           {!isMarketsDataLoading ? (
             <FlatList
               keyExtractor={(item, index) => 'coinMarketItem' + index}
-              data={markets}
+              data={proccessedMarketsData}
               renderItem={({item}) => (
-                <CoinMarketItem item={item} buttonPress={addItemPressed} />
+                <CoinMarketItem
+                  item={item}
+                  buttonPress={_holdingsAddItemPressed}
+                />
               )}
             />
           ) : (
             <ActivityIndicator style={{marginTop: 20}} color="white" />
           )}
+          <FloatingButton title={'+'} buttonPress={_portfolioAddItemPressed} />
         </View>
       </View>
     </View>
   );
 };
 
-const addItemPressed = item => {
+const _holdingsAddItemPressed = item => {
   console.log(item.name);
+};
+
+const _portfolioAddItemPressed = () => {
+  console.log('button pressed');
 };
 
 const styles = StyleSheet.create({
   mainContainer: {flex: 1, backgroundColor: '#14121E'},
   mainContainerHeader: {
     width: null,
-    height: 96,
+    paddingVertical: 31,
     backgroundColor: '#5217CF',
     borderRadius: 12,
     justifyContent: 'center',
@@ -118,6 +176,7 @@ const styles = StyleSheet.create({
     color: '#7B7986',
   },
   contentContainer: {
+    flex: 1,
     paddingHorizontal: 20,
   },
 });
