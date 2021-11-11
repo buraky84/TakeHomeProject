@@ -26,7 +26,7 @@ this custom font to the app. react-native-vector-icons supports loading custom f
 ### Custom Fonts
 Downloaded ApercuArabicPro fonts and linked to the app.
 
-### HTTP Rest API
+### HTTP(s) Calls
 axios library is used
 
 ### State Management
@@ -40,7 +40,7 @@ Additional Configuration & Notes
 
 App WorkFlow
 =========================
-Clicking second tab (Track) "GET"s Market Data and stored in redux. Spinner is displayed while loading the data first time.
+Clicking second tab (Track) "GET"s Market Data and stores in redux. Spinner is displayed while loading the data first time.
 Market data is fetched every 3 seconds with an interval to get updated data on the background without spinner. Interval killed on exit.
 Clicking icon next to "Coins" sorts assets by "baseCurrency" ASC / DESC directions.
 Clicking icom next to "Price" sorts assets by "price" ASC / DESC direction.
