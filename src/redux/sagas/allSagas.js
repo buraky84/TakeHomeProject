@@ -19,8 +19,7 @@ const getCoinMarketsRequestSaga = function* (action) {
   try {
     const response = yield call(apis.getMarkets);
     if(response) {
-      yield put ($A(TRACK_ACTIONS.GET_MARKETS_SUCCESS, response.data))
-      console.log(response.data);
+      yield put ($A(TRACK_ACTIONS.GET_MARKETS_SUCCESS, response.data.result))
     }
   } catch (err) {
     console.log('error => ', err);

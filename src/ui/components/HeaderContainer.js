@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#14121E',
     height: 80,
     justifyContent: 'center',
-    paddingLeft: 24,
+    paddingHorizontal: 24,
   },
   headerText: {
     fontFamily: 'ApercuArabicPro-Regular',
