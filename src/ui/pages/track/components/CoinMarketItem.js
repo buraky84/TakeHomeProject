@@ -3,7 +3,7 @@ import {View, Text, StyleSheet, Image} from 'react-native';
 import {numberWithCommas} from '../../../../Util';
 import {CommonButton} from '../../../components/CommonButton';
 
-export const CoinMarketItem = ({item, buttonPress}) => {
+export const CoinMarketItem = ({item, isAdded, buttonPress}) => {
   const {baseCurrency, price, name} = item;
 
   return (
@@ -21,7 +21,10 @@ export const CoinMarketItem = ({item, buttonPress}) => {
         <Text style={styles.assetPriceText}>${numberWithCommas(price)}</Text>
       </View>
       <View style={styles.assetHoldingsContainer}>
-        <CommonButton title="Add" buttonPress={() => buttonPress(item)} />
+        <CommonButton
+          title={isAdded ? 'Remove' : 'Add'}
+          buttonPress={() => buttonPress(item)}
+        />
       </View>
     </View>
   );

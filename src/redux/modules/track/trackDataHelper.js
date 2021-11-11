@@ -1,4 +1,7 @@
 export const filterMarketData = marketData => {
+  /*
+  Filtered enabled, not restricted assets which are traded on spot and has USD quoteCurrency
+  */
   return marketData.filter(
     item =>
       item.enabled &&
@@ -9,6 +12,16 @@ export const filterMarketData = marketData => {
   );
 };
 
-export const sortMarketData = marketData => {
-  return marketData;
+export const addRemoveHoldings = (holdings, newItem) => {
+  let newHoldings = [...holdings];
+  const itemIndex = holdings.findIndex(
+    singleHolding => singleHolding == newItem,
+  );
+
+  if (itemIndex === -1) {
+    newHoldings.push(newItem);
+  } else {
+    newHoldings.splice(itemIndex, 1);
+  }
+  return newHoldings;
 };

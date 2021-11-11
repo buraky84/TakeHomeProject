@@ -2,7 +2,7 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import apis from './apis';
 import {TRACK_ACTIONS} from '../actionTypes';
 
-const httpSuccessChecker = (response) => {
+const httpSuccessChecker = response => {
   if (!response) {
     return false;
   }
@@ -18,8 +18,8 @@ const $A = (type, payload) => ({
 const getCoinMarketsRequestSaga = function* (action) {
   try {
     const response = yield call(apis.getMarkets);
-    if(response) {
-      yield put ($A(TRACK_ACTIONS.GET_MARKETS_SUCCESS, response.data.result))
+    if (response) {
+      yield put($A(TRACK_ACTIONS.GET_MARKETS_SUCCESS, response.data.result));
     }
   } catch (err) {
     console.log('error => ', err);

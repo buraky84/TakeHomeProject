@@ -20,6 +20,7 @@ export const Track = () => {
   const [sortByPriceDirection, setSortByPriceDirection] = useState(null);
 
   const _applyMarketsDataSorting = data => {
+    // sorting market data method ascending and descending direction
     if (sortByNameDirection) {
       if (sortByNameDirection === 'asc') {
         return data.sort(
@@ -46,10 +47,39 @@ export const Track = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch({type: TRACK_ACTIONS.GET_MARKETS_REQUEST});
+    dispatch({
+      type: TRACK_ACTIONS.GET_MARKETS_REQUEST,
+      payload: {showSpinner: true},
+    });
+
+    //get market data periodically with X seconds of interval
+    const intervalId = setInterval(
+      () =>
+        dispatch({
+          type: TRACK_ACTIONS.GET_MARKETS_REQUEST,
+          payload: {showSpinner: false},
+        }),
+      3000,
+    );
+
+    //clear interval on exit
+    return () => clearInterval(intervalId);
   }, []);
 
-  const {isMarketsDataLoading, markets} = useSelector(state => state.track);
+  const _holdingsAddItemPressed = item => {
+    dispatch({
+      type: TRACK_ACTIONS.ADD_REMOVE_HOLDINGS,
+      payload: item.name,
+    });
+  };
+
+  const _portfolioAddItemPressed = () => {
+    console.log('button pressed');
+  };
+
+  const {isMarketsDataLoading, markets, holdings} = useSelector(
+    state => state.track,
+  );
   const proccessedMarketsData = _applyMarketsDataSorting(markets);
 
   return (
@@ -109,6 +139,11 @@ export const Track = () => {
               renderItem={({item}) => (
                 <CoinMarketItem
                   item={item}
+                  isAdded={
+                    holdings.findIndex(
+                      singleHolding => singleHolding === item.name,
+                    ) > -1
+                  }
                   buttonPress={_holdingsAddItemPressed}
                 />
               )}
@@ -121,14 +156,6 @@ export const Track = () => {
       </View>
     </View>
   );
-};
-
-const _holdingsAddItemPressed = item => {
-  console.log(item.name);
-};
-
-const _portfolioAddItemPressed = () => {
-  console.log('button pressed');
 };
 
 const styles = StyleSheet.create({

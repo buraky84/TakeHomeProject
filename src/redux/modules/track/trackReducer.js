@@ -2,12 +2,14 @@ import {
   GET_MARKETS_REQUEST,
   GET_MARKETS_SUCCESS,
   GET_MARKETS_FAILURE,
+  ADD_REMOVE_HOLDINGS,
 } from './trackActionTypes';
-import {filterMarketData} from './trackDataHelper';
+import {addRemoveHoldings, filterMarketData} from './trackDataHelper';
 
 const initialGlobalState = {
   isMarketsDataLoading: false,
   markets: [],
+  holdings: [],
 };
 
 //************************ REDUCER ************************************
@@ -16,6 +18,9 @@ export const trackReducer = (state = initialGlobalState, action) => {
   let newState = state;
   switch (action.type) {
     case GET_MARKETS_REQUEST:
+      if (!action.payload.showSpinner) {
+        return newState;
+      }
       newState = {
         ...state,
         isMarketsDataLoading: true,
@@ -27,7 +32,7 @@ export const trackReducer = (state = initialGlobalState, action) => {
         action?.payload && action.payload.length > 0
           ? filterMarketData(action.payload)
           : [];
-      console.log(filteredMarketData);
+      //console.log(filteredMarketData);
       newState = {
         ...state,
         isMarketsDataLoading: false,
@@ -39,6 +44,13 @@ export const trackReducer = (state = initialGlobalState, action) => {
         ...state,
         isMarketsDataLoading: false,
         markets: [],
+      };
+      return newState;
+    case ADD_REMOVE_HOLDINGS:
+      console.log(action.payload);
+      newState = {
+        ...state,
+        holdings: addRemoveHoldings(state.holdings, action.payload),
       };
       return newState;
     default:
