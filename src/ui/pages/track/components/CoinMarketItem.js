@@ -15,7 +15,7 @@ export const CoinMarketItem = ({item, buttonPress}) => {
         height: 72,
         alignItems: 'center',
       }}>
-      <View style={{flex: 0.25, alignItems: 'flex-start'}}>
+      <View style={{flex: 0.3, alignItems: 'flex-start'}}>
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
           <Image
             source={require('../../../../assets/images/bitcoin.png')}
@@ -27,7 +27,7 @@ export const CoinMarketItem = ({item, buttonPress}) => {
       <View style={{flex: 0.35, alignItems: 'flex-end'}}>
         <Text style={styles.assetPriceText}>${numberWithCommas(price)}</Text>
       </View>
-      <View style={{flex: 0.4, alignItems: 'flex-end'}}>
+      <View style={{flex: 0.35, alignItems: 'flex-end'}}>
         <CommonButton title="Add" buttonPress={() => buttonPress(item)} />
       </View>
     </View>

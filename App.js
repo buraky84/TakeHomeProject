@@ -43,7 +43,7 @@ const App = () => {
           <Tab.Navigator
             screenOptions={{
               tabBarStyle: {
-                paddingTop: 8,
+                paddingTop: 10,
                 alignItems: 'center',
                 backgroundColor: '#14121E',
                 borderTopWidth: 1,

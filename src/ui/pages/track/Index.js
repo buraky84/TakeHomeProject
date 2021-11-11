@@ -67,7 +67,7 @@ export const Track = () => {
               borderBottomColor: '#262334',
               paddingTop: 22,
             }}>
-            <View style={{flex: 0.25, alignItems: 'flex-start'}}>
+            <View style={{flex: 0.3, alignItems: 'flex-start'}}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.portfolioHeaderText}>COIN</Text>
                 <TouchableOpacity
@@ -105,7 +105,7 @@ export const Track = () => {
                 </TouchableOpacity>
               </View>
             </View>
-            <View style={{flex: 0.4, alignItems: 'flex-end'}}>
+            <View style={{flex: 0.35, alignItems: 'flex-end'}}>
               <Text style={styles.portfolioHoldingsText}>HOLDINGS</Text>
             </View>
           </View>
